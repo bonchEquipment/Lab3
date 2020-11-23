@@ -1,0 +1,42 @@
+package pack;
+
+import java.util.*;
+
+public class World {
+    private static List<String> shortiesInTheHouse = new ArrayList<>();
+    private static List<String> shortiesInTheOffice = new ArrayList<>();
+    private static List<String> shortiesOnTheStreet = new ArrayList<>();
+
+    public static void addShortyToHouse(String name) {
+        shortiesInTheHouse.add(name);
+    }
+
+    public static void addShortyToOffice(String name) {
+        shortiesInTheOffice.add(name);
+    }
+
+    public static void addShortyToStreet(String name) {
+        shortiesOnTheStreet.add(name);
+    }
+
+    public static void deleteShortyFromTheHouse(String name) {shortiesInTheHouse.remove(name);}
+
+    public static void deleteShortyFromTheOffice(String name) {shortiesInTheOffice.remove(name);}
+
+    public static void deleteShortyFromTheStreet(String name) {shortiesOnTheStreet.remove(name);}
+
+
+    public static List<String> seeShortiesInTheHouse() {
+        return shortiesInTheHouse;
+    }
+
+    public static List<String> seeShortiesOnTheStreet() {
+        return shortiesOnTheStreet;
+    }
+
+    public static List<String> seeShortiesInTheOffice() {
+        return shortiesInTheOffice;
+    }
+
+
+}
