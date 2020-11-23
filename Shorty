@@ -1,0 +1,104 @@
+package pack;
+
+import java.util.*;
+
+public abstract class Shorty extends Human implements AbleToSee, AbleToWalk {
+
+    private Location location;
+    private List<java.lang.String> SeenByMe = new ArrayList<>();
+
+    public Shorty(Location location) {
+        super();
+        SeenByMe.add(getName());
+        System.out.println("Безликий человек был создан и помещен в " + location);
+        this.location = location;
+        switch (location) {
+            case ДОМ -> World.addShortyToHouse(getName());
+            case УЛИЦА -> World.addShortyToStreet(getName());
+            case ОФИС -> World.addShortyToOffice(getName());
+        }
+    }
+
+    public Shorty(java.lang.String name, Location location) {
+        super(name);
+        SeenByMe.add(getName());
+        System.out.println(name + " был создан и помещен в " + location);
+        this.location = location;
+        switch (location) {
+            case ДОМ -> World.addShortyToHouse(getName());
+            case УЛИЦА -> World.addShortyToStreet(getName());
+            case ОФИС -> World.addShortyToOffice(getName());
+        }
+    }
+
+    public void say(String phrase) {
+        System.out.println(getName() + " сказал: \"" + phrase + "\"");
+    }
+
+    public void buy(String product) {
+        addThing(product);
+        takeMoney(2);
+        System.out.println(getName() + " купил " + product);
+    }
+
+    public void read() {
+        if (!getListOfThings().isEmpty()) {
+            if (Math.random() < 0.5) {
+                System.out.println(getName() + " прочитал газету и нашел сообщение о крахе общества гигантских растений");
+            } else {
+                System.out.println(getName() + " прочитал газету, но не нашел сообщение о крахе общества гигантских растений");
+            }
+        } else {
+            System.out.println(getName() + " хотел было почитать, но оказалось, что нечего");
+        }
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void goTo(Location location) {
+        switch (getLocation()) {
+            case ДОМ -> World.deleteShortyFromTheHouse(getName());
+            case ОФИС -> World.deleteShortyFromTheOffice(getName());
+            case УЛИЦА -> World.deleteShortyFromTheStreet(getName());
+        }
+        switch (location) {
+            case ДОМ -> World.addShortyToHouse(getName());
+            case ОФИС -> World.addShortyToOffice(getName());
+            case УЛИЦА -> World.addShortyToStreet(getName());
+        }
+        this.location = location;
+        System.out.println(getName() + "пошел в " + location);
+    }
+
+    public void lookAround() {
+        switch (location) {
+            case ДОМ:
+                for (String characterOnTheLocation : World.seeShortiesInTheHouse()) {
+                    if (!SeenByMe.contains(characterOnTheLocation)) {
+                        SeenByMe.add(characterOnTheLocation);
+                        System.out.println(getName() + " увидел " + characterOnTheLocation);
+                    }
+                }
+                break;
+            case УЛИЦА:
+                for (String characterOnTheLocation : World.seeShortiesOnTheStreet()) {
+                    if (!SeenByMe.contains(characterOnTheLocation)) {
+                        SeenByMe.add(characterOnTheLocation);
+                        System.out.println(getName() + " увидел " + characterOnTheLocation);
+                    }
+                }
+                break;
+            case ОФИС:
+                for (String characterOnTheLocation : World.seeShortiesInTheOffice()) {
+                    if (!SeenByMe.contains(characterOnTheLocation)) {
+                        SeenByMe.add(characterOnTheLocation);
+                        System.out.println(getName() + " увидел " + characterOnTheLocation);
+                    }
+                }
+                break;
+        }
+    }
+
+}
