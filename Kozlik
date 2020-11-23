@@ -1,0 +1,12 @@
+package pack;
+
+public class Kozlik extends Shorty {
+
+    public Kozlik(Location location) {
+        super(location);
+    }
+
+    public Kozlik(java.lang.String name, Location location) {
+        super(name, location);
+    }
+}
