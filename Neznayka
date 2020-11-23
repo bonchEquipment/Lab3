@@ -1,0 +1,16 @@
+package pack;
+
+public class Neznayka extends Shorty {
+    {
+        giveMoney(101);
+    }
+
+    public Neznayka(Location location) {
+        super(location);
+    }
+
+    public Neznayka(java.lang.String name, Location location) {
+        super(name, location);
+    }
+}
+
