@@ -1,0 +1,17 @@
+package pack;
+
+public class NewspaperSeller extends Shorty {
+
+    public NewspaperSeller(Location location) {
+        super(location);
+    }
+
+    public NewspaperSeller(java.lang.String name, Location location) {
+        super(name, location);
+    }
+
+    @Override
+    public void say(java.lang.String phrase) {
+        System.out.println(getName() + " выкрикнул: \"" + phrase + "\"");
+    }
+}
