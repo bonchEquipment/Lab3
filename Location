@@ -1,7 +1,0 @@
-package pack;
-
-public enum Location {
-    ДОМ,
-    УЛИЦА,
-    ОФИС;
-}
