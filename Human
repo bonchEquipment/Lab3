@@ -9,10 +9,13 @@ public abstract class Human {
     private int amountOfMoney;
     private List<String> listOfThings = new ArrayList<>();
 
-    public Human() { name = "Безликий человек"; }
+    public Human() {
+        name = "Безликий человек";
+    }
 
-    public Human(String name) { this.name = name; }
-
+    public Human(String name) {
+        this.name = name;
+    }
 
     public abstract void say(String str);
 
@@ -70,16 +73,30 @@ public abstract class Human {
         amountOfMoney = amountOfMoney - amount;
     }
 
-    @Override
-    public String toString() { return ""; }
+    public int seeAmountOfMoney() {
+        return amountOfMoney;
+    }
 
     @Override
-   public boolean equals(Object o){ return true; }
+    public String toString() {
+        return getName();
+    }
 
-   @Override
-    public int hashCode(){ return 0; }
+    @Override
+    public boolean equals(Object obj) {
+        int realAmountOfMoney = amountOfMoney;
+        if (amountOfMoney == obj.hashCode()) {
+            giveMoney(1);
+            if (amountOfMoney == obj.hashCode()) {
+                return true;
+            }
+        }
+        amountOfMoney = realAmountOfMoney;
+        return false;
+    }
 
-
-
-
+    @Override
+    public int hashCode() {
+        return amountOfMoney;
+    }
 }
