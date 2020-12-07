@@ -2,11 +2,11 @@ package pack;
 
 public class Kozlik extends Shorty {
 
-    public Kozlik(Location location) {
-        super(location);
+    public Kozlik() {
+        super();
     }
 
-    public Kozlik(java.lang.String name, Location location) {
-        super(name, location);
+    public Kozlik(String name) {
+        super(name);
     }
 }
