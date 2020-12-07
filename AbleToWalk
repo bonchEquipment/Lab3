@@ -1,5 +1,9 @@
 package pack;
 
 public interface AbleToWalk {
-    void goTo(Location location);
+    void goTo(World.Location location);
+    World getMyWorld();
+    String getName();
+    void setMyWorld(World myWorld);
 }
+
